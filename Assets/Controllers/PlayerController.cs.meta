@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 156e5a7423aa6634fb0072dfe852bbb8
+timeCreated: 1482184517
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - tester: {instanceID: 0}
+  - p1l1: {fileID: 21300000, guid: 67d7d9bc07d7dd640a23106e5572fb03, type: 3}
+  - p1l2: {fileID: 21300000, guid: 1b101dc542f1b6a478d7b75cfec276cc, type: 3}
+  - p1l3: {fileID: 21300000, guid: f55467dc14e3e8845a434078f8602f75, type: 3}
+  - p1l4: {fileID: 21300000, guid: faebd8282a092d34ab064f49abd688b4, type: 3}
+  - p1l5: {fileID: 21300000, guid: a1f85ac31325e5e40a5cd899808e0b68, type: 3}
+  - p1r1: {fileID: 21300000, guid: fd8aebc55eea04a449ae5287a5815759, type: 3}
+  - p1r2: {fileID: 21300000, guid: 391f4aa8f4ff7c44a96e1a0eed013ad0, type: 3}
+  - p1r3: {fileID: 21300000, guid: 87140635b1d26584f85bac4e9924fbe7, type: 3}
+  - p1r4: {fileID: 21300000, guid: 31a2912e8dd291145bd25e68a01f1701, type: 3}
+  - p1r5: {fileID: 21300000, guid: 3fa39443a5e801549b1f4343ecc503ea, type: 3}
+  - p1u1: {fileID: 21300000, guid: 1462737e23ad5464595f0f3838286bcf, type: 3}
+  - p1u2: {fileID: 21300000, guid: 74962ad386c1eb2468cbf9c33c7a8631, type: 3}
+  - p1u3: {fileID: 21300000, guid: 0bb6244b1e86f734dbb9ee33e211e86e, type: 3}
+  - p1u4: {fileID: 21300000, guid: 90d8f354de082ed4f9cc2668f4ab4300, type: 3}
+  - p1u5: {fileID: 21300000, guid: 0b1417a4a3c9d7a4c9cdd01b3cc3513a, type: 3}
+  - p1d1: {fileID: 21300000, guid: 92872c3cd7540954b85d1390a1523d1e, type: 3}
+  - p1d2: {fileID: 21300000, guid: aacf5d1bb53336c4d935f23a553560c0, type: 3}
+  - p1d3: {fileID: 21300000, guid: 2a6c11ce513442144bce05bf6c2c1ffa, type: 3}
+  - p1d4: {fileID: 21300000, guid: b26e87129bb71354e90333dc8d06b14d, type: 3}
+  - p1d5: {fileID: 21300000, guid: c40bcfc661fa889478f020f50b5d7c26, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
