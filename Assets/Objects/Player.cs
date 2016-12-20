@@ -19,18 +19,20 @@ public class Player{
 	//actions//
 	Action<int, int, int, int> upf;
 	Action<int, float, float, int> upp;
+	Action<float,float,float,float> upb;
 
 
 	//constructor//
-	public Player(float posx, float posy, int framelimit, int pt, Action<int, int, int, int> upf, Action<int, float, float, int> upp)
+	public Player(float posx, float posy, int framelimit, int pt, Action<int, int, int, int> upf, Action<int, float, float, int> upp, Action<float, float, float ,float> upb)
 	{
 		this.posx = posx;
 		this.posy = posy;
-		direction = 2;
+		direction = 0;
 		frame = 1;
 		this.framelimit = framelimit;
 		this.upf = upf;
 		this.upp = upp;
+		this.upb = upb;
 		this.pt = pt;
 		Debug.Log ("player inicilized");
 		this.iniciate ();
@@ -67,6 +69,7 @@ public class Player{
 	public float getposy(){
 		return posy;
 	}
+		
 
 	public int getdirection(){
 		return direction;
@@ -87,18 +90,23 @@ public class Player{
 		case 0:
 			posy -= 1;
 			updateframe ();
+			upb (posx, posy + 1, posx, posy);
+
 			break;	
 		case 1:
 			posx += 1;
 			updateframe ();
+			upb (posx - 1, posy, posx, posy);
 			break;	
 		case 2:
 			posy += 1;
 			updateframe ();
+			upb (posx, posy - 1, posx, posy);
 			break;	
 		case 3:
 			posx -= 1;
 			updateframe ();
+			upb (posx + 1, posy, posx, posy);
 			break;	
 		}
 	}

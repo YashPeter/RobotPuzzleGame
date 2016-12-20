@@ -15,12 +15,17 @@ public class WorldController : MonoBehaviour
     Action<int, int, int, int> upf;
     Action<int, float, float, int> upp;
 
+	int [] playercontrols;
+	int currentplayer;
+
 
     void Start()
     {
-
+		currentplayer = 0;
+		playercontrols = new int[6];
         upf = PlayerController.Instance.returnUPF();
         upp = PlayerController.Instance.returnUPP();
+
         Instance = this;
         World = new WorldData(upf, upp);
         //sets up actions from playercontroller to be sent to player objects using player controller instance//
@@ -33,56 +38,66 @@ public class WorldController : MonoBehaviour
 
         //add a player, just for testing//
         World.AddPlayer();
+		World.AddPlayer ();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //work in progress//
+		if (Input.GetKeyUp ("left")) {
+			if (currentplayer != 0) {
+				currentplayer -= 1;
+			}
+		}
+		if (Input.GetKeyUp ("right")) {
+			if (World.returnAmount() - 1 > currentplayer) {
+				currentplayer += 1;
+			}
+		}
+        
         if (Input.GetKeyUp("s"))
         {
-            if (World.ReturnPlayerDirection(0) != 0)
+            if (World.ReturnPlayerDirection(currentplayer) != 0)
             {
-                World.SetPlayerDirection(0, 0);
+				World.SetPlayerDirection(currentplayer, 0);
             }
             else
             {
-                World.MovePlayer(0);
+				World.MovePlayer(currentplayer);
             }
         }
         if (Input.GetKeyUp("d"))
         {
-            if (World.ReturnPlayerDirection(0) != 1)
+			if (World.ReturnPlayerDirection(currentplayer) != 1)
             {
-                World.SetPlayerDirection(0, 1);
+				World.SetPlayerDirection(currentplayer, 1);
             }
             else
             {
-                World.MovePlayer(0);
+				World.MovePlayer(currentplayer);
             }
         }
         if (Input.GetKeyUp("w"))
         {
-            if (World.ReturnPlayerDirection(0) != 2)
+			if (World.ReturnPlayerDirection(currentplayer) != 2)
             {
-                World.SetPlayerDirection(0, 2);
+				World.SetPlayerDirection(currentplayer, 2);
             }
             else
             {
-                World.MovePlayer(0);
+				World.MovePlayer(currentplayer);
             }
         }
         if (Input.GetKeyUp("a"))
         {
-            if (World.ReturnPlayerDirection(0) != 3)
+			if (World.ReturnPlayerDirection(currentplayer) != 3)
             {
-                World.SetPlayerDirection(0, 3);
+				World.SetPlayerDirection(currentplayer, 3);
             }
             else
             {
-                World.MovePlayer(0);
+				World.MovePlayer(currentplayer);
             }
         }
 

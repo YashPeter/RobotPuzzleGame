@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 //controls the visuals of the player only//
 public class PlayerController : MonoBehaviour
 {
@@ -92,10 +93,10 @@ public class PlayerController : MonoBehaviour
             playerdisplay[arraypos].AddComponent<SpriteRenderer>();
             playersprite[arraypos] = new SpriteRenderer();
             playersprite[arraypos] = playerdisplay[arraypos].GetComponent<SpriteRenderer>();
-            playerdisplay[arraypos].AddComponent<Rigidbody2D>();
-            playerdisplay[arraypos].GetComponent<Rigidbody2D>().mass = 1;
-            playerdisplay[arraypos].GetComponent<Rigidbody2D>().gravityScale = 0;
-            playervelocity[arraypos] = 15;
+            //playerdisplay[arraypos].AddComponent<Rigidbody2D>();
+           // playerdisplay[arraypos].GetComponent<Rigidbody2D>().mass = 1;
+            //playerdisplay[arraypos].GetComponent<Rigidbody2D>().gravityScale = 0;
+            //playervelocity[arraypos] = 12;
            
 
         }
@@ -219,58 +220,11 @@ public class PlayerController : MonoBehaviour
 	{
 		
 
-		//playerdisplay [arraypos].transform.position = new Vector3 (x, y, 0);
+		playerdisplay [arraypos].transform.position = new Vector3 (x, y, 0);
 
-        switch (direction)
-        {
-            case 0:
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, -playervelocity[arraypos], 0));
-                while (playerdisplay [arraypos].GetComponent<Rigidbody2D>().position.y >= y)
-                {
-                    
-                }
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().Sleep();
-                break;
-
-            case 1:
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(playervelocity[arraypos], 0, 0));
-                while (playerdisplay[arraypos].GetComponent<Rigidbody2D>().position.x <= y)
-                {
-                   
-                  
-                }
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().Sleep();
-                break;
-
-            case 2:
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
-                StartCoroutine(waitOneSec(arraypos));
-                Debug.Log(playerdisplay[arraypos].GetComponent<Rigidbody2D>().position.y);
-                //while (playervelocity[arraypos] != 0)
-                // {
-                //    Debug.Log(playervelocity[arraypos]);
-                //    playervelocity[arraypos] -= 1;
-                // }
-
-                break;
-
-            case 3:
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(-playervelocity[arraypos], 0, 0));
-                while (playervelocity[arraypos] != 0)
-                {
-                    Debug.Log(playervelocity[arraypos]);
-                    playervelocity[arraypos] -= 1;
-                }
-                playerdisplay[arraypos].GetComponent<Rigidbody2D>().Sleep();
-                break;
-        }
-        playervelocity[arraypos] = 15;
-        
 
     }
+
 
    
 }
