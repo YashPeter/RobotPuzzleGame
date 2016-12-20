@@ -26,7 +26,7 @@ public class Player{
 	{
 		this.posx = posx;
 		this.posy = posy;
-		direction = 0;
+		direction = 2;
 		frame = 1;
 		this.framelimit = framelimit;
 		this.upf = upf;

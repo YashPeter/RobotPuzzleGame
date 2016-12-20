@@ -29,27 +29,41 @@ public class PlayerController : MonoBehaviour
     public Sprite p1d3;
     public Sprite p1d4;
     public Sprite p1d5;
+
+
     // Use this for initialization
+
 
     public static PlayerController Instance { get; protected set; }
 
-    public float playerSpeed = 12;
+    //actions used for communication between controllers// 
 
     public Action<int, int, int, int> upf;
     public Action<int, float, float, int> upp;
+
+    //arrays for player//
+
     GameObject[] playerdisplay;
     SpriteRenderer[] playersprite;
-    Rigidbody2D[] playermovement;
+    float[] playervelocity;
+
+
 
     void Start()
     {
+
+        //sets instance// 
         Instance = this;
-        Debug.Log("playercontroller started");
+   
+        //sets up arrays//
         playerdisplay = new GameObject[6];
         playersprite = new SpriteRenderer[6];
+        playervelocity = new float[6];
+
+        //declares whats the actions represents// 
         upf = changeGivenPlayerFrame;
         upp = translateGivenPlayerFrame;
-        //return WorldController.Instance.World.*insertmethod*
+       
     }
 
     // Update is called once per frame
@@ -60,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     public Action<int, int, int, int> returnUPF()
     {
-        Debug.Log("testing");
+        
         return upf;
     }
 
@@ -78,8 +92,12 @@ public class PlayerController : MonoBehaviour
             playerdisplay[arraypos].AddComponent<SpriteRenderer>();
             playersprite[arraypos] = new SpriteRenderer();
             playersprite[arraypos] = playerdisplay[arraypos].GetComponent<SpriteRenderer>();
+            playerdisplay[arraypos].AddComponent<Rigidbody2D>();
+            playerdisplay[arraypos].GetComponent<Rigidbody2D>().mass = 1;
+            playerdisplay[arraypos].GetComponent<Rigidbody2D>().gravityScale = 0;
+            playervelocity[arraypos] = 15;
            
-            
+
         }
 
         switch (frame)
@@ -201,7 +219,58 @@ public class PlayerController : MonoBehaviour
 	{
 		
 
-		playerdisplay [arraypos].transform.position = new Vector3 (x, y, 0);
+		//playerdisplay [arraypos].transform.position = new Vector3 (x, y, 0);
 
-	}
+        switch (direction)
+        {
+            case 0:
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, -playervelocity[arraypos], 0));
+                while (playerdisplay [arraypos].GetComponent<Rigidbody2D>().position.y >= y)
+                {
+                    
+                }
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().Sleep();
+                break;
+
+            case 1:
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(playervelocity[arraypos], 0, 0));
+                while (playerdisplay[arraypos].GetComponent<Rigidbody2D>().position.x <= y)
+                {
+                   
+                  
+                }
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().Sleep();
+                break;
+
+            case 2:
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(0, playervelocity[arraypos], 0));
+                StartCoroutine(waitOneSec(arraypos));
+                Debug.Log(playerdisplay[arraypos].GetComponent<Rigidbody2D>().position.y);
+                //while (playervelocity[arraypos] != 0)
+                // {
+                //    Debug.Log(playervelocity[arraypos]);
+                //    playervelocity[arraypos] -= 1;
+                // }
+
+                break;
+
+            case 3:
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().AddForce(new Vector3(-playervelocity[arraypos], 0, 0));
+                while (playervelocity[arraypos] != 0)
+                {
+                    Debug.Log(playervelocity[arraypos]);
+                    playervelocity[arraypos] -= 1;
+                }
+                playerdisplay[arraypos].GetComponent<Rigidbody2D>().Sleep();
+                break;
+        }
+        playervelocity[arraypos] = 15;
+        
+
+    }
+
+   
 }
