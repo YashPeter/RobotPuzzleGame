@@ -12,6 +12,7 @@ public class Player{
 	int framelimit;
 	int pt;
 	playernum type;
+	int gear;
 
 	// enum //
 	public enum playernum {Player1, Player2, Player3, Player4, Player5, Player6 };
@@ -23,7 +24,7 @@ public class Player{
 
 
 	//constructor//
-	public Player(float posx, float posy, int framelimit, int pt, Action<int, int, int, int> upf, Action<int, float, float, int> upp, Action<float, float, float ,float> upb)
+	public Player(float posx, float posy, int framelimit, int pt, Action<int, int, int, int> upf, Action<int, float, float, int> upp, Action<float, float, float ,float> upb, int gear)
 	{
 		this.posx = posx;
 		this.posy = posy;
@@ -35,6 +36,7 @@ public class Player{
 		this.upb = upb;
 		this.pt = pt;
 		Debug.Log ("player inicilized");
+		this.gear = gear;
 		this.iniciate ();
 
 

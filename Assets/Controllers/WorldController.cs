@@ -38,7 +38,9 @@ public class WorldController : MonoBehaviour
 
         //add a player, just for testing//
         World.AddPlayer();
-		World.AddPlayer ();
+		World.AddPlayer();
+
+
 
     }
 

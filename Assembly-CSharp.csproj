@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Controllers\Tester.cs" />
      <Compile Include="Assets\Controllers\WorldController.cs" />
+     <Compile Include="Assets\Objects\Item.cs" />
      <Compile Include="Assets\Objects\Player.cs" />
      <Compile Include="Assets\World\WorldData.cs" />
   </ItemGroup>
