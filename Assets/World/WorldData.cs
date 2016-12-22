@@ -5,14 +5,18 @@ using System;
 
 public class WorldData {
 	int currentplayer;
+	int currentsplitter1;
 	Player[] playables;
 	MapData [,] map;
+	Splitter[] splitters;
 	Action<int, int, int, int> upf;
 	Action<int, float, float, int> upp;
 	Action<float,float,float,float> upb;
 
 	public WorldData(Action<int, int, int, int> upf, Action<int, float, float, int> upp) {
+		currentsplitter1 = 0;
 		upb = updatepos;
+		splitters = new Splitter[100];
 		playables = new Player[6];
 		map = new MapData[1000, 1000];
 		for (int i = 0; i < 1000; i++) {
@@ -105,6 +109,21 @@ public class WorldData {
         return currentplayer;
 	}
 
+	public void AddSplitter(int amount){
+		splitters [currentsplitter1] = new Splitter (amount);
+	}
+
+	public void addExit(float x, float y){
+		splitters [currentsplitter1].addExit (new SplitterEx(x,y));
+	}
+
+	public void setEntrance(float x, float y){
+		splitters [currentsplitter1].setEntrance (new SplitterE(x,y));
+	}
+
+	public void setGearPad(float x, float y){
+		splitters [currentsplitter1].setGearPad (new GearPad (x, y));
+	}
 
 
 }

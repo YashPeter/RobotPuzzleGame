@@ -37,6 +37,15 @@ public class WorldController : MonoBehaviour
 
 
         //add a player, just for testing//
+		World.AddSplitter(2);
+		World.addExit (3, 3);
+		SplitterController.Instance.startExit(3, 3);
+		World.addExit (3, 5);
+		SplitterController.Instance.startExit (3, 5);
+		World.setEntrance (-3, 4);
+		SplitterController.Instance.startEntrance (-3, 4);
+		World.setGearPad (5, 5);
+		SplitterController.Instance.startGearPad (5, 5);
         World.AddPlayer();
 		World.AddPlayer();
 

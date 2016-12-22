@@ -47,10 +47,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Controllers\SplitterController.cs" />
      <Compile Include="Assets\Controllers\Tester.cs" />
      <Compile Include="Assets\Controllers\WorldController.cs" />
+     <Compile Include="Assets\Objects\Gear.cs" />
+     <Compile Include="Assets\Objects\GearPad.cs" />
      <Compile Include="Assets\Objects\Item.cs" />
+     <Compile Include="Assets\Objects\MapData.cs" />
      <Compile Include="Assets\Objects\Player.cs" />
+     <Compile Include="Assets\Objects\Splitter.cs" />
+     <Compile Include="Assets\Objects\SplitterE.cs" />
+     <Compile Include="Assets\Objects\SplitterEx.cs" />
+     <Compile Include="Assets\Objects\Tile.cs" />
      <Compile Include="Assets\World\WorldData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
