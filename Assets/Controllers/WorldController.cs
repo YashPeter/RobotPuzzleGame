@@ -54,7 +54,7 @@ public class WorldController : MonoBehaviour
 		}
 		if (Input.GetKeyUp ("right")) {
 			if (World.returnAmount() - 1 > currentplayer) {
-				currentplayer += 1;
+    				currentplayer += 1;
 			}
 		}
         

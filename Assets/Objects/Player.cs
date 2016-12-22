@@ -84,6 +84,7 @@ public class Player{
 	public void iniciate(){
 		upf(pt - 1, frame, direction, pt);
 		upp(pt - 1, posx, posy, direction);
+        upb(posx, posy, posx, posy);
 	}
 
 	//moves the player depending on their direction//
