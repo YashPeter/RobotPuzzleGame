@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     public Action<int, int, int, int> upf;
     public Action<int, float, float, int> upp;
+	public Action<int,int> delp;
+
 
     //arrays for player//
 
@@ -52,9 +54,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+		delp = removePlayer;
+		Debug.Log ("testplayer");
 
         //sets instance// 
         Instance = this;
+
+
    
         //sets up arrays//
         playerdisplay = new GameObject[6];
@@ -83,6 +89,31 @@ public class PlayerController : MonoBehaviour
     {
         return upp;
     }
+
+	public Action<int, int> returndelp(){
+		return delp;
+	}
+
+
+	public void removePlayer(int position, int amount){
+		GameObject tempgo;
+		SpriteRenderer tempsr;
+		if (position == amount) {
+			playerdisplay [position] = null;
+			playersprite [position] = null;
+		} else {
+			Destroy (playerdisplay [position]);
+			playersprite [position] = null;
+			//wip//
+			for (int i = 0; i < (amount - position - 1); i++) {
+				tempgo = playerdisplay [position + i + 1];
+				tempsr = playersprite [position + i + 1];
+				playerdisplay [position + 1] = tempgo;
+				playersprite [position + 1] = tempsr;
+			}
+		}
+
+	}
 
     public void changeGivenPlayerFrame(int arraypos, int frame, int direction, int currplay)
     {

@@ -39,6 +39,26 @@ public class WorldData {
         
     }
 
+	public void removePlayer(int position){
+		Player temp;
+		map [(int)playables [position].getposx () +500, (int)playables [position].getposy () +500].setItemType (0);
+		playables [position] = null;
+		if (position != currentplayer) {
+			
+
+			for (int i = 0; i < (currentplayer - position - 1); i++) {
+				temp = playables [i + position + 1];
+				playables [i + position] = temp;
+				playables [i + position + 1] = null;
+			}
+			currentplayer -= 1;
+			Debug.Log (currentplayer);
+
+		} 
+
+
+	}
+
 	public int ReturnPlayerDirection(int xp)
 	{
 		return playables[xp].getdirection();

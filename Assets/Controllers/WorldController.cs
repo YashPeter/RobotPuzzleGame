@@ -14,6 +14,10 @@ public class WorldController : MonoBehaviour
     //action iniciated//
     Action<int, int, int, int> upf;
     Action<int, float, float, int> upp;
+	Action<int,int> delp;
+	Action<float, float> startentrance;
+	Action<float, float> startexit;
+	Action<float, float> startgear;
 
 	int [] playercontrols;
 	int currentplayer;
@@ -21,8 +25,13 @@ public class WorldController : MonoBehaviour
 
     void Start()
     {
+		Debug.Log ("testworld");
 		currentplayer = 0;
 		playercontrols = new int[6];
+		delp = PlayerController.Instance.returndelp ();
+		startentrance = SplitterController.Instance.returnStartEntrance ();
+		startexit = SplitterController.Instance.returnStartExit ();
+		startgear = SplitterController.Instance.returnStartGear ();
         upf = PlayerController.Instance.returnUPF();
         upp = PlayerController.Instance.returnUPP();
 
@@ -35,20 +44,23 @@ public class WorldController : MonoBehaviour
 
         //sets up world data//
 
+		World.AddPlayer();
+		World.AddPlayer();
+		World.removePlayer (0);
+		PlayerController.Instance.removePlayer (0, World.returnAmount());
+		Debug.Log (currentplayer);
 
         //add a player, just for testing//
 		World.AddSplitter(2);
 		World.addExit (3, 3);
-		SplitterController.Instance.startExit(3, 3);
+		startexit(3, 3);
 		World.addExit (3, 5);
-		SplitterController.Instance.startExit (3, 5);
+		startexit (3, 5);
 		World.setEntrance (-3, 4);
-		SplitterController.Instance.startEntrance (-3, 4);
+		startentrance (-3, 4);
 		World.setGearPad (5, 5);
-		SplitterController.Instance.startGearPad (5, 5);
-        World.AddPlayer();
-		World.AddPlayer();
-
+		startgear (5, 5);
+        
 
 
     }

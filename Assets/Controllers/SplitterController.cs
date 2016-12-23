@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SplitterController : MonoBehaviour {
 
@@ -11,9 +12,11 @@ public class SplitterController : MonoBehaviour {
 	public Sprite gearpad;
 
 	public static SplitterController Instance { get; protected set; }
+
 	int currententrance;
 	int currentexit;
 	int currentgearpad;
+
 	GameObject [] gearpadObject;
 	GameObject [] entranceObject;
 	GameObject [] exitObject;
@@ -21,9 +24,19 @@ public class SplitterController : MonoBehaviour {
 	SpriteRenderer [] entranceSprite;
 	SpriteRenderer [] exitSprite;
 
+	public Action<float, float> startentrance;
+	public Action<float, float> startexit;
+	public Action<float, float> startgear;
+
 	void Start () {
-		
 		Instance = this;
+		//set ups actions
+		startentrance = startEntrance;
+		startexit = startExit;
+		startgear = startGearPad;
+
+
+
 		currententrance = 0;
 		currentexit = 0;
 		currentgearpad = 0;
@@ -36,9 +49,16 @@ public class SplitterController : MonoBehaviour {
 		exitSprite = new SpriteRenderer[100];
 	}
 
+	public Action<float,float> returnStartEntrance(){
+		return startentrance;
+	}
 
-	void Update () {
+	public Action<float,float> returnStartExit(){
+		return startexit;
+	}
 
+	public Action<float,float> returnStartGear(){
+		return startgear;
 	}
 
 	public void startEntrance(float x, float y){
@@ -55,7 +75,7 @@ public class SplitterController : MonoBehaviour {
 		exitObject [currentexit] = new GameObject ();
 		exitObject[currentexit].AddComponent<SpriteRenderer>();
 		exitSprite[currentexit] = new SpriteRenderer();
-		exitSprite[currentexit] = entranceObject[currententrance].GetComponent<SpriteRenderer>();
+		exitSprite[currentexit] = exitObject[currentexit].GetComponent<SpriteRenderer>();
 		exitSprite [currentexit].sprite = exit;
 		exitObject [currentexit].transform.position = new Vector3(x, y, 0);
 		currentexit += 1;
@@ -65,7 +85,7 @@ public class SplitterController : MonoBehaviour {
 		gearpadObject [currentgearpad] = new GameObject ();
 		gearpadObject[currentgearpad].AddComponent<SpriteRenderer>();
 		gearpadSprite[currentgearpad] = new SpriteRenderer();
-		gearpadSprite[currentgearpad] = entranceObject[currententrance].GetComponent<SpriteRenderer>();
+		gearpadSprite[currentgearpad] = gearpadObject[currentgearpad].GetComponent<SpriteRenderer>();
 		gearpadSprite [currentgearpad].sprite = gearpad;
 		gearpadObject [currentgearpad].transform.position = new Vector3(x, y, 0);
 		currentgearpad += 1;
